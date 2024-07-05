@@ -9,6 +9,7 @@ public class ChatBot {
     private Map<Pair, String> animalQueries;
     private Map<String[], String> attributeQueries;
 
+
     private static final String ONTOLOGY_LINK = "<http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#";
 
     public ChatBot(String ontologyFilePath) {
@@ -32,13 +33,14 @@ public class ChatBot {
         animalQueries.put(new Pair("кошк", "кошка"), "Cat");
         animalQueries.put(new Pair("вороб", "воробей"), "Sparrow");
         // добавляем нового индивида дельфина
-        animalQueries.put(new Pair("дельфин", "дельфин"), "Dolphin");
+        animalQueries.put(new Pair("мурав", "муравей"), "Ant");
 
         attributeQueries = new HashMap<>();
         attributeQueries.put(new String[]{"возраст", "лет"}, "hasAge");
         attributeQueries.put(new String[]{"имя", "зовут"}, "hasName");
         // добавляем новый атрибут
-        attributeQueries.put(new String[]{"вес", "весит"}, "hasWeight");
+        attributeQueries.put(new String[]{"цвет", "раскраск"}, "hasColor");
+        attributeQueries.put(new String[]{"порода", "породы"}, "hasBreed");
     }
 
     /**
@@ -124,8 +126,12 @@ public class ChatBot {
     private String generateSparqlQuery(String animal, String attribute) {
         String animalUri = ONTOLOGY_LINK + animal + ">";
         String attributeUri = ONTOLOGY_LINK + attribute + ">";
-        if (/*attribute.equals("hasAge") || attribute.equals("hasWeight") || */attributeQueries.containsValue(attribute)) {
-            return "SELECT ?name ?" + attribute.substring(3).toLowerCase() + " WHERE { " + animalUri + " " + ONTOLOGY_LINK + "hasName> ?name . " + animalUri + " " + attributeUri + " ?" + attribute.substring(3).toLowerCase() + " . }";
+        if (attributeQueries.containsValue(attribute)) {
+            return "SELECT ?name ?"
+                    + attribute.substring(3).toLowerCase()
+                    + " WHERE { " + animalUri + " " + ONTOLOGY_LINK
+                    + "hasName> ?name . " + animalUri + " " + attributeUri
+                    + " ?" + attribute.substring(3).toLowerCase() + " . }";
         } else {
             return "SELECT ?name WHERE { " + animalUri + " " + attributeUri + " ?name . }";
         }

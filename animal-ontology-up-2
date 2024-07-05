@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/kattsyn/ontologies/2024/6/animal-ontology-up-3#"
+     xml:base="http://www.semanticweb.org/kattsyn/ontologies/2024/6/animal-ontology-up-3"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:untitled-ontology-7="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/animal-ontology-up-3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasAge -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasAge">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasBreed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasBreed">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasColor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasColor">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#hasName">
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Bird -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Bird">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Insect -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Insect">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Mammal -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Mammal">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Ant -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Ant">
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Insect"/>
+        <untitled-ontology-7:hasColor>коричневый</untitled-ontology-7:hasColor>
+        <untitled-ontology-7:hasName>Арнольд</untitled-ontology-7:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Cat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Cat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Mammal"/>
+        <untitled-ontology-7:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</untitled-ontology-7:hasAge>
+        <untitled-ontology-7:hasColor>черный</untitled-ontology-7:hasColor>
+        <untitled-ontology-7:hasName>Дикси</untitled-ontology-7:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Dog -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Dog">
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Mammal"/>
+        <untitled-ontology-7:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</untitled-ontology-7:hasAge>
+        <untitled-ontology-7:hasBreed>Лабрадор</untitled-ontology-7:hasBreed>
+        <untitled-ontology-7:hasName>Эллинга</untitled-ontology-7:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Sparrow -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Sparrow">
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Animal"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/kattsyn/ontologies/2024/6/untitled-ontology-7#Bird"/>
+        <untitled-ontology-7:hasAge rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</untitled-ontology-7:hasAge>
+        <untitled-ontology-7:hasName>Гоша</untitled-ontology-7:hasName>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+

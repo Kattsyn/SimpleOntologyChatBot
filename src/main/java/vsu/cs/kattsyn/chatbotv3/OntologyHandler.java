@@ -30,11 +30,12 @@ public class OntologyHandler {
      * Если нашли нужный, то записываем его во внутреннюю Map'у attributes класса AnimalInfo, где ключом будет являться первое ключевое слово из attributeQueries, а значением
      * значение полученное в результате запроса. И так для каждого животного. Затем в sb (stringBuilder) собираем строку вывода чат-бота, где перебираем toString() каждого AnimalInfo.
      * 2-й случай: похожим образом как для всех животных перебираем аттрибуты для конкретного нашего животного и затем собираем sb (stringBuilder), который, перебрав все аттрибуты, возвращаем из функции.
-     * @param sparqlQuery уже сгенерированный SpaRQL запрос
-     * @param userInput ввод, который делал пользователь
-     * @param animalQueries словарь животных Map<Pair, String>, где Pair - класс, содержащий 2 строки. В первой ключевое слово, во второй название животного в И.п.
+     *
+     * @param sparqlQuery      уже сгенерированный SpaRQL запрос
+     * @param userInput        ввод, который делал пользователь
+     * @param animalQueries    словарь животных Map<Pair, String>, где Pair - класс, содержащий 2 строки. В первой ключевое слово, во второй название животного в И.п.
      * @param attributeQueries словарь аттрибутов, которые могут иметь животные. Map<String[], String>, где String[] - набор ключевых слов для предиката String.
-     * @return возвращает ответ, сформированный чат-ботов
+     * @return возвращает ответ, сформированный чат-ботом
      */
     public String queryOntology(String sparqlQuery, String userInput, Map<Pair, String> animalQueries, Map<String[], String> attributeQueries) {
         Query query = QueryFactory.create(sparqlQuery);
@@ -66,30 +67,13 @@ public class OntologyHandler {
                             if (predicate.endsWith("#type")) {
                                 String type = objectNode.asResource().getLocalName();
                                 animalInfo.addType(type);
-                            }/*
-                            if (predicate.endsWith("#hasName")) {
-                                animalInfo.name = objectNode.asLiteral().getString();
-                            } else if (predicate.endsWith("#hasAge")) {
-                                animalInfo.age = objectNode.asLiteral().getInt();
-                            } else if (predicate.endsWith("#type")) {
-                                String type = objectNode.asResource().getLocalName();
-                                animalInfo.addType(type);
-                            }*/
+                            }
 
                             for (Pair key : animalQueries.keySet()) {
                                 if (subject.contains(animalQueries.get(key))) {
                                     animalInfo.individual = key.getSecond();
                                 }
                             }
-                            /*
-                            if (subject.contains("#Sparrow")) {
-                                animalInfo.individual = "Воробей";
-                            } else if (subject.contains("#Dog")) {
-                                animalInfo.individual = "Собака";
-                            } else if (subject.contains("#Cat")) {
-                                animalInfo.individual = "Кошка";
-                            }
-                             */
                         }
                     }
                 }
@@ -102,19 +86,6 @@ public class OntologyHandler {
             } else {
                 while (results.hasNext()) {
                     QuerySolution soln = results.nextSolution();
-                    /*
-                    RDFNode nameNode = soln.get("name");
-                    RDFNode ageNode = soln.get("age");
-
-
-                    if (nameNode != null) {
-                        sb.append("Имя: ").append(nameNode.asLiteral().getString()).append("\n");
-                    }
-                    if (ageNode != null) {
-                        sb.append("Возраст: ").append(ageNode.asLiteral().getInt()).append(" лет\n");
-                    }
-                    sb.append("\n");*/
-                    //todo: метод вроде готов, нужно проверить, добавив в онтологию новый аттрибут
                     Map<RDFNode, String> nodesKeyMap = new HashMap<>();
                     //hasAge -> substring (3, length).toLowerCase
                     for (String[] key : attributeQueries.keySet()) {
@@ -147,10 +118,6 @@ public class OntologyHandler {
      */
     private static class AnimalInfo {
         String uri;
-        /*
-        String name;
-        int age;
-         */
         String type;
         String individual;
         Map<String, String> attributes;
@@ -165,6 +132,8 @@ public class OntologyHandler {
                 this.type = "Млекопитающее";
             } else if (type.contains("Bird")) {
                 this.type = "Птица";
+            } else if (type.contains("Insect")) {
+                this.type = "Насекомое";
             } else if (this.type == null && type.contains("Animal")) {
                 this.type = "Животное";
             }
